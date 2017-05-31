@@ -1,4 +1,4 @@
-'use strict';
+
 const terminateProcess = require('./helpers').terminateProcess;
 const shell = require('shelljs');
 const log = require('./log');
@@ -11,7 +11,7 @@ module.exports = function addFilesAndCreateTag(newVersion) {
   terminateProcess(code);
 
   // ###### Commit files #####
-  code = shell.exec('git commit -m "chore(release): ' + newVersion + '"').code;
+  code = shell.exec('git commit -m "chore(release): ' + newVersion + '" -m "[ci skip]"').code;
   terminateProcess(code);
 
   // ###### TAG NEW VERSION #####
